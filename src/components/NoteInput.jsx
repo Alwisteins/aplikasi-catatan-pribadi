@@ -26,12 +26,12 @@ class NoteInput extends React.Component {
 
   onChangeTitleHandler(event) {
     const characterLimit = 50;
-    if (event.terget.value.length > characterLimit) return;
+    if (event.target.value.length > characterLimit) return;
 
     this.setState(() => {
       return {
         title: event.target.value,
-        characterLeft: characterLimit - event.target.value,
+        characterLeft: characterLimit - event.target.value.length,
       };
     });
   }
@@ -57,6 +57,7 @@ class NoteInput extends React.Component {
           onChange={this.onChangeTitleHandler}
         />
         <textarea
+          className="note-input__body"
           placeholder="Tulis isi catatan disini..."
           value={this.state.content}
           onChange={this.onChangeContentHandler}
