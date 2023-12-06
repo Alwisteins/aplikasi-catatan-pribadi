@@ -7,21 +7,21 @@ class NoteInput extends React.Component {
     this.state = {
       characterLeft: 50,
       title: "",
-      content: "",
+      body: "",
     };
 
     this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
     this.onChangeTitleHandler = this.onChangeTitleHandler.bind(this);
-    this.onChangeContentHandler = this.onChangeContentHandler.bind(this);
+    this.onChangeBodyHandler = this.onChangeBodyHandler.bind(this);
   }
 
   onSubmitEventHandler(event) {
     event.preventDefault();
-    const { title, content } = this.state;
-    if (!title || !content) return;
+    const { title, body } = this.state;
+    if (!title || !body) return;
 
-    this.props.addNote({ title, content });
-    this.setState({ title: "", content: "", characterLeft: 50 });
+    this.props.addNote({ title, body });
+    this.setState({ title: "", body: "", characterLeft: 50 });
   }
 
   onChangeTitleHandler(event) {
@@ -36,9 +36,9 @@ class NoteInput extends React.Component {
     });
   }
 
-  onChangeContentHandler(event) {
+  onChangeBodyHandler(event) {
     this.setState(() => {
-      return { content: event.target.value };
+      return { body: event.target.value };
     });
   }
 
@@ -59,8 +59,8 @@ class NoteInput extends React.Component {
         <textarea
           className="note-input__body"
           placeholder="Tulis isi catatan disini..."
-          value={this.state.content}
-          onChange={this.onChangeContentHandler}
+          value={this.state.body}
+          onChange={this.onChangeBodyHandler}
         />
         <button type="submit">Tambah</button>
       </form>
