@@ -15,8 +15,8 @@ function NoteItem({
         <p className=".note-item__date">{note.createdAt}</p>
         <p className="note-item__body">{note.body}</p>
         <div className="note-item__action">
-          <DeleteButton id={id} onDelete={onDelete} isArchived={isArchived} />
-          <ArchiveButton id={id} onArchive={onArchive} />
+          <DeleteButton id={note.id} onDelete={onDelete} isArchived={isArchived} />
+          <ArchiveButton id={note.id} onArchive={onArchive} />
         </div>
       </div>
     </div>
