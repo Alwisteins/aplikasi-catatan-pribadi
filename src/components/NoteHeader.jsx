@@ -1,13 +1,13 @@
 import React from "react";
 
-function NoteHeader({ onSearchHandler }) {
+function NoteHeader({ onSearch }) {
   return (
     <div className="note-app__header">
       <h1>Zettelkasten-notes</h1>
       <input
         type="text"
         placeholder="Cari catatan disini..."
-        onChange={(event) => onSearchHandler(event.target.value)}
+        onChange={(event) => onSearch(event.target.value)}
       />
     </div>
   );
