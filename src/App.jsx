@@ -35,7 +35,7 @@ class App extends React.Component {
       title,
       body,
       createdAt: new Date().toISOString(),
-      isArchive: false,
+      archived: false,
     };
 
     this.setState((previousNotes) => {
