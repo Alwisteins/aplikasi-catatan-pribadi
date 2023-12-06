@@ -14,25 +14,21 @@ function NoteList({ notes, onDelete, onArchive }) {
     <>
       {noteCategories.map(({ title, notes }, index) => (
         <div key={index}>
-          <h1>
+          <h2>
             {title}: {notes.length} catatan
-          </h1>
-          <div>
+          </h2>
+          <div className="notes-list">
             {notes.length === 0 ? (
-              <div className="notes-list__empty-message">
-                Belum ada catatan untuk ditampilkan.
-              </div>
+              <p className="notes-list__empty-message">Tidak ada catatan.</p>
             ) : (
-              <div className="notes-list">
-                {notes.map((note) => (
-                  <NoteItem
-                    key={note.id}
-                    note={note}
-                    onDelete={onDelete}
-                    onArchive={onArchive}
-                  />
-                ))}
-              </div>
+              notes.map((note) => (
+                <NoteItem
+                  key={note.id}
+                  note={note}
+                  onDelete={onDelete}
+                  onArchive={onArchive}
+                />
+              ))
             )}
           </div>
         </div>
