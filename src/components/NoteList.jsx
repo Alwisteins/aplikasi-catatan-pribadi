@@ -27,7 +27,7 @@ function NoteList({ notes, onDelete, onArchive }) {
                 {notes.map((note) => (
                   <NoteItem
                     key={note.id}
-                    {...note}
+                    note={note}
                     onDelete={onDelete}
                     onArchive={onArchive}
                   />
