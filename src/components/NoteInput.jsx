@@ -17,7 +17,11 @@ class NoteInput extends React.Component {
 
   onSubmitEventHandler(event) {
     event.preventDefault();
-    this.props.addNote(this.state);
+    const { title, content } = this.state;
+    if (!title || !content) return;
+
+    this.props.addNote({ title, content });
+    this.setState({ title: "", content: "", characterLeft: 50 });
   }
 
   onChangeTitleHandler(event) {
