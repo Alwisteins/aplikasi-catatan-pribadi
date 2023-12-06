@@ -12,12 +12,12 @@ function NoteList({ notes, onDelete, onArchive }) {
 
   return (
     <>
-      {noteCategories.map(({ title, notes }, index) => {
+      {noteCategories.map(({ title, notes }, index) => (
         <div key={index}>
           <h1>
             {title}: {notes.length} catatan
           </h1>
-          <>
+          <div>
             {notes.length === 0 ? (
               <div className="notes-list__empty-message">
                 Belum ada catatan untuk ditampilkan.
@@ -34,9 +34,9 @@ function NoteList({ notes, onDelete, onArchive }) {
                 ))}
               </div>
             )}
-          </>
-        </div>;
-      })}
+          </div>
+        </div>
+      ))}
     </>
   );
 }
