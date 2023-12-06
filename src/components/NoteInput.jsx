@@ -40,7 +40,7 @@ class NoteInput extends React.Component {
 
   render() {
     return (
-      <form className="note-input" onClick={this.onSubmitEventHandler}>
+      <form className="note-input" onSubmit={this.onSubmitEventHandler}>
         <span className="note-input__title__char-limit">
           Karakter Tersisa: {this.state.characterLeft}
         </span>
