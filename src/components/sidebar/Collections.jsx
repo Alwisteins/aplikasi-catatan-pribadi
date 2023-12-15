@@ -4,7 +4,7 @@ export default function Collections() {
   const notesLength = [7, 4, 0, 11];
   return (
     <div className="px-2 pt-4">
-      <div className="flex justify-between mb-0.5 text-[#CFCFCF] font-medium text-sm border-b"> 
+      <div className="flex justify-between mb-0.5 text-[#CFCFCF] text-sm border-b"> 
         <p>collections</p>
         <div className="space-x-2">
           <button>···</button>
