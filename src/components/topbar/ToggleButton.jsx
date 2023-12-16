@@ -6,7 +6,7 @@ export default function ToggleButton() {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
       <div className="flex">
-        <label class="inline-flex relative items-center mr-5 cursor-pointer">
+        <label className="inline-flex relative items-center mr-5 cursor-pointer">
           <input
             type="checkbox"
             className="sr-only peer"
