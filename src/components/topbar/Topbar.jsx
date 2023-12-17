@@ -3,7 +3,7 @@ import AddButton from "./AddButton";
 import Search from "./Search";
 import ToggleButton from "./ToggleButton";
 
-export default function Topbar({ onSearch }) {
+export default function Topbar({ onSearch, onChangeTheme }) {
   return (
     <div className="h-16 w-5/6 px-6 border-b-2 flex items-center justify-between">
       <div className="flex space-x-4">
@@ -11,7 +11,7 @@ export default function Topbar({ onSearch }) {
         <Search onSearch={onSearch} />
       </div>
       <div>
-        <ToggleButton />
+        <ToggleButton onChangeTheme={onChangeTheme} />
       </div>
     </div>
   );
