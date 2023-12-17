@@ -6,7 +6,7 @@ export default function ToggleButton({ onChangeTheme }) {
   const handleOnClick = () => {
     setEnabled(!enabled);
     setIsDark(!isDark);
-    onChangeTheme(isDark);
+    onChangeTheme(!isDark);
   };
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
