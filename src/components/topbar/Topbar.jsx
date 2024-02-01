@@ -4,11 +4,11 @@ import Search from "./Search";
 import LoginButton from "./LoginButton";
 import ToggleButton from "./ToggleButton";
 
-export default function Topbar({ onSearch, onChangeTheme }) {
+export default function Topbar({ onSearch, onChangeTheme, handleNoteModalOpen }) {
   return (
     <div className="h-16 w-5/6 px-6 border-b-2 flex items-center justify-between">
       <div className="flex space-x-4 items-center">
-        <AddButton />
+        <AddButton handleNoteModalOpen={handleNoteModalOpen} />
         <Search onSearch={onSearch} />
       </div>
       <div className="flex space-x-4 items-center">
