@@ -1,71 +1,85 @@
-import React from "react";
+import React, { useState } from "react";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
-class NoteInput extends React.Component {
-  constructor(props) {
-    super(props);
+export default function NoteInput({ addNote }) {
+  const [characterLeft, setCharacterLeft] = useState(50);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
 
-    this.state = {
-      characterLeft: 50,
-      title: "",
-      body: "",
-    };
-
-    this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
-    this.onChangeTitleHandler = this.onChangeTitleHandler.bind(this);
-    this.onChangeBodyHandler = this.onChangeBodyHandler.bind(this);
-  }
-
-  onSubmitEventHandler(event) {
+  const onSubmitEventHandler = (event) => {
     event.preventDefault();
-    const { title, body } = this.state;
+
+    //jika state title atau body masih kosong
     if (!title || !body) return;
 
-    this.props.addNote({ title, body });
-    this.setState({ title: "", body: "", characterLeft: 50 });
-  }
+    //jika state title dan body telah terisi
+    addNote({ title, body });
+    setTitle("");
+    setBody("");
+    setCharacterLeft(50);
+  };
 
-  onChangeTitleHandler(event) {
+  const onChangeTitleHandler = (event) => {
+    //jika title melebihi character limit
     const characterLimit = 50;
     if (event.target.value.length > characterLimit) return;
 
-    this.setState(() => {
-      return {
-        title: event.target.value,
-        characterLeft: characterLimit - event.target.value.length,
-      };
-    });
-  }
+    //penggantian title
+    setTitle(event.target.value);
+    setCharacterLeft(characterLimit - event.target.value.length);
+  };
 
-  onChangeBodyHandler(event) {
-    this.setState(() => {
-      return { body: event.target.value };
-    });
-  }
+  const onChangeBodyHandler = (event) => {
+    setBody(event.target.value);
+  };
 
-  render() {
-    return (
-      <form className="note-input" onSubmit={this.onSubmitEventHandler}>
-        <h2 className="form-title">Tambah catatan</h2>
-        <span className="note-input__title__char-limit">
-          Karakter Tersisa: {this.state.characterLeft}
-        </span>
-        <input
-          className="note-input__title"
-          type="text"
-          placeholder="Tulis judul catatan disini..."
-          value={this.state.title}
-          onChange={this.onChangeTitleHandler}
-        />
-        <textarea
-          className="note-input__body"
-          placeholder="Tulis isi catatan disini..."
-          value={this.state.body}
-          onChange={this.onChangeBodyHandler}
-        />
-        <button type="submit">Tambah</button>
-      </form>
-    );
-  }
+  return (
+    <form className="space-y-3" onSubmit={onSubmitEventHandler}>
+      <Typography
+        variant="h4"
+        style={{ fontWeight: "700", textAlign: "center", fontFamily: "Inter" }}
+      >
+        Create Note
+      </Typography>
+      <Typography variant="body2">Character Left: {characterLeft}</Typography>
+      <TextField
+        id="outlined-basic"
+        label="Tulis judul catatan disini..."
+        variant="outlined"
+        value={title}
+        onChange={onChangeTitleHandler}
+        className="w-full"
+      />
+      <TextField
+        id="outlined-multiline-static"
+        label="Tulis isi catatan disini..."
+        multiline
+        rows={4}
+        value={body}
+        onChange={onChangeBodyHandler}
+        className="w-full"
+      />
+      <Button
+        type="submit"
+        variant="contained"
+        sx={{
+          backgroundColor: "#A855F7",
+          fontWeight: "600",
+          borderRadius: "10px",
+          fontSize: "14px",
+          marginLeft: 15,
+          boxShadow: "none",
+          "&:hover": {
+            backgroundColor: "#9333ea",
+            boxShadow: "none",
+          },
+        }}
+      >
+        Create <AddCircleIcon style={{ paddingLeft: "6px" }} />
+      </Button>
+    </form>
+  );
 }
-
-export default NoteInput;
