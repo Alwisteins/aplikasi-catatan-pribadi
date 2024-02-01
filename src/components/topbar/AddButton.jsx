@@ -1,8 +1,8 @@
 import React from "react";
 import { Button } from "@mui/material";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
 
-export default function AddButton() {
+export default function AddButton({ handleNoteModalOpen }) {
   return (
     <Button
       variant="contained"
@@ -18,8 +18,9 @@ export default function AddButton() {
           boxShadow: "none",
         },
       }}
+      onClick={handleNoteModalOpen}
     >
-      <AddCircleIcon style={{ paddingRight: "6px" }} /> Add Note
+      <NoteAddIcon style={{ paddingRight: "6px" }} /> Add Note
     </Button>
   );
 }
